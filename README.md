@@ -1,1 +1,1 @@
-# PYTHON Telegram Bot for logistics
+# PYTHON Telegram Bot for hiring
