@@ -1,5 +1,6 @@
 import functools
 import sentry_sdk
+import validators
 
 
 def logger_factory(logger):
@@ -22,3 +23,7 @@ def logger_factory(logger):
         return inner
 
     return debug_requests
+
+
+def link_validators(link):
+    return validators.url.url(link)

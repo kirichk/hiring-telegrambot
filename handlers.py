@@ -3,7 +3,7 @@ import os
 from telegram import (InlineKeyboardButton, InlineKeyboardMarkup, Update,
                         ReplyKeyboardMarkup, KeyboardButton)
 from telegram.ext import CallbackContext, ConversationHandler
-from tools.validators import logger_factory
+from tools.validators import logger_factory, link_validators
 from tools.resources import (question1, question2, question3, question4,
                             question5, question6, question7, question8,
                             question9, question10)
@@ -198,8 +198,14 @@ def finish_handler(update: Update, context: CallbackContext):
 
     except AttributeError:
         request = update.message
+        link = link_validators(update.message.text)
+        while link is not True:
+            update.message.reply_text(
+                text='Некорректный ссылка! Пожалуйста повторите попытку.',
+            )
+        return FINISH
         context.user_data[CASE_DETAILS] = f'Ссылки на успешные '\
-                                        f'кейсы:\n{request.text}'
+                                        f'кейсы:\n{link}'
     current_user = request.chat.username
     logger.info('user_data: %s', context.user_data)
     request.reply_text(
