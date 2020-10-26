@@ -203,7 +203,7 @@ def finish_handler(update: Update, context: CallbackContext):
             update.message.reply_text(
                 text='Некорректный ссылка! Пожалуйста повторите попытку.',
             )
-        return FINISH
+            return FINISH
         context.user_data[CASE_DETAILS] = f'Ссылки на успешные '\
                                         f'кейсы:\n{link}'
     current_user = request.chat.username
