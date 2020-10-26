@@ -18,8 +18,8 @@ TOKEN = os.getenv('TOKEN')
 HEROKU_APP_NAME = os.getenv('HEROKU_APP_NAME')
 PORT = int(os.environ.get("PORT", "8443"))
 
-(NAME, PHONE, NICHE, VERTICAL, GEO, SPEND, CASES,
-CASE_DETAILS, FINISH) = range(9)
+(NAME, NICHE, VERTICAL, GEO, SPEND, CASES,
+CASE_DETAILS, FINISH) = range(8)
 
 
 def main():
@@ -51,8 +51,6 @@ def main():
         ],
         states={
             NAME: [CallbackQueryHandler(name_handler,
-                                    pass_user_data=True),],
-            PHONE: [MessageHandler(Filters.all, phone_handler,
                                     pass_user_data=True),],
             NICHE : [MessageHandler(Filters.all, niche_handler,
                                     pass_user_data=True),],

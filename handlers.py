@@ -14,8 +14,8 @@ debug_requests = logger_factory(logger=logger)
 
 GROUP = os.getenv("GROUP")
 
-(NAME, PHONE, NICHE, VERTICAL, GEO, SPEND, CASES,
-CASE_DETAILS, FINISH) = range(9)
+(NAME, NICHE, VERTICAL, GEO, SPEND, CASES,
+CASE_DETAILS, FINISH) = range(8)
 
 
 @debug_requests
@@ -46,31 +46,14 @@ def name_handler(update: Update, context: CallbackContext):
     update.callback_query.message.reply_text(
         text=question2['title']
     )
-    return PHONE
-
-
-@debug_requests
-def phone_handler(update: Update, context: CallbackContext):
-    context.user_data[NAME] = update.message.text
-    logger.info('user_data: %s', context.user_data)
-
-    contact_keyboard = KeyboardButton('Поделиться номером',
-                                        request_contact=True,)
-    reply_markup = ReplyKeyboardMarkup(keyboard=[[ contact_keyboard ]],
-                                        resize_keyboard=True,
-                                        one_time_keyboard=True)
-    update.message.reply_text(
-                    text=question3['title'],
-                    reply_markup=reply_markup)
     return NICHE
 
 
 @debug_requests
 def niche_handler(update: Update, context: CallbackContext):
-    try:
-        context.user_data[PHONE] = update.message.contact.phone_number
-    except AttributeError:
-        context.user_data[PHONE] = update.message.text
+    context.user_data[NAME] = update.message.text
+    logger.info('user_data: %s', context.user_data)
+
     inline_buttons = InlineKeyboardMarkup(
         inline_keyboard=[
             [InlineKeyboardButton(text=name, callback_data='q4_'+name)
@@ -214,7 +197,6 @@ def finish_handler(update: Update, context: CallbackContext):
     context.bot.send_message(chat_id=GROUP,
                             text=f'Новый отклик! От @{current_user}\n'\
                             f'Имя: {context.user_data[NAME]}\n'\
-                            f'Номер телефона {context.user_data[PHONE]}\n'\
                             f'Работает c {context.user_data[NICHE]}\n'\
                             f'Вертикаль: {context.user_data[VERTICAL]}\n'\
                             f'ГЕО: {context.user_data[GEO]}\n'\
