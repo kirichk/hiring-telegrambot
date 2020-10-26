@@ -26,4 +26,4 @@ def logger_factory(logger):
 
 
 def link_validators(link):
-    return validators.url.url(link)
+    return validators.url(link)
