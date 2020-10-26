@@ -21,7 +21,7 @@ def cancel_handler(update: Update, context: CallbackContext):
 @debug_requests
 def echo_handler(update: Update, context: CallbackContext):
     print(update)
-    if update.message.chat.id != GROUP:
+    if update.message.chat.type != 'group':
         update.message.reply_text(
             'Нажмите /start для заполнения анкеты!',
         )
