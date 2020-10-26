@@ -198,14 +198,14 @@ def finish_handler(update: Update, context: CallbackContext):
 
     except AttributeError:
         request = update.message
-        link = link_validators(update.message.text)
+        link = link_validators(request.text)
         while link is not True:
             update.message.reply_text(
                 text='Некорректный ссылка! Пожалуйста повторите попытку.',
             )
             return FINISH
         context.user_data[CASE_DETAILS] = f'Ссылки на успешные '\
-                                        f'кейсы:\n{link}'
+                                        f'кейсы:\n{request.text}'
     current_user = request.chat.username
     logger.info('user_data: %s', context.user_data)
     request.reply_text(
