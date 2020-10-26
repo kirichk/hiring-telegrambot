@@ -4,10 +4,9 @@ from telegram import Bot
 from telegram.ext import (CallbackQueryHandler, Updater, MessageHandler,
                             CommandHandler, ConversationHandler, Filters)
 from telegram.utils.request import Request
-from handlers import (start_buttons_handler, name_handler, phone_handler,
-                        niche_handler, vertical_handler, geo_handler,
-                        spend_handler, cases_handler, case_details_handler,
-                        finish_handler)
+from handlers import (start_buttons_handler, name_handler, niche_handler,
+                        vertical_handler, geo_handler, spend_handler,
+                        cases_handler, case_details_handler, finish_handler)
 from tools.additional_handlers import cancel_handler, echo_handler
 
 
