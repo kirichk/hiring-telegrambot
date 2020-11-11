@@ -1,5 +1,5 @@
 question1 = {
-    'title':'Привет! Я - <a href='https://everad.com/'>EVERAD</a> MEDIA BUYING BOT!\n'\
+    'title':'Привет! Я - <a href="https://everad.com/">EVERAD</a> MEDIA BUYING BOT!\n'\
     'Я помогу тебе попасть в нашу крутую команду медиа байеров, '\
     'если ты хочешь начать сотрудничать с компанией Everad, МАСШТАБИРУЯ '\
     'свои СВЯЗКИ и РАЗРАБАТЫВАЯ НОВЫЕ связки с нами ЗА НАШ БЮДЖЕТ и с нашей '\
