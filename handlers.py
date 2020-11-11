@@ -201,6 +201,7 @@ def finish_handler(update: Update, context: CallbackContext):
                             f'Работает c {context.user_data[NICHE]}\n'\
                             f'Вертикаль: {context.user_data[VERTICAL]}\n'\
                             f'ГЕО: {context.user_data[GEO]}\n'\
+                            f'Спенд: {context.user_data[SPEND]}\n'\
                             f'Кейсы: {context.user_data[CASES]}\n'\
                             f'{context.user_data[CASE_DETAILS]}\n')
     return ConversationHandler.END
