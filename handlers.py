@@ -27,6 +27,7 @@ def start_buttons_handler(update: Update, context: CallbackContext):
         ],
     )
     update.message.reply_text(
+        parse_mode='HTML',
         text=question1['title']
     )
     update.message.reply_text(
